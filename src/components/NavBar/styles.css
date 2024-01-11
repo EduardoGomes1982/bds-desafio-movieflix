@@ -3,6 +3,7 @@
   align-items: center;
   padding: 0px 20px;
   min-height: 68px;
+  justify-content: space-between;
 }
 
 .main-nav h4 {

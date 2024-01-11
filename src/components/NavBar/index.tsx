@@ -2,6 +2,7 @@ import '@popperjs/core';
 import 'bootstrap/js/dist/collapse';
 import { Link } from 'react-router-dom';
 import './styles.css';
+import LogoutButton from 'components/LogoutButton';
 
 const NavBar = () => {
     return (
@@ -9,6 +10,7 @@ const NavBar = () => {
             <Link to='/'>
                 <h4>MovieFlix</h4>
             </Link>
+            <LogoutButton />
         </nav>
     );
 };

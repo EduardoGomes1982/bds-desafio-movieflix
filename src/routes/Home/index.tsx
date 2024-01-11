@@ -22,7 +22,7 @@ const Home = () => {
                         // value={formData.sufixProfile}
                         />
                         <input name="password" className="textbox"
-                            type="text" placeholder="Senha"
+                            type="password" placeholder="Senha"
                         // onChange={handleImputChange}
                         // value={formData.sufixProfile}
                         />
