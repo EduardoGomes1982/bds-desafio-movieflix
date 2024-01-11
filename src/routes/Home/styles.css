@@ -1,3 +1,21 @@
+.card-login-logo {
+    margin: 0 auto;
+    max-width: 360px;
+    display: none;
+}
+
+.card-login-logo h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 0.72px;
+}
+
+.card-login-logo p {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.33px;
+}
+
 .card-login {
     margin: 0 auto;
     max-width: 480px;
@@ -41,5 +59,13 @@
 @media (min-width: 576px) {
     .card-login h2 {
         font-size: 48px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-login-logo {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 }
