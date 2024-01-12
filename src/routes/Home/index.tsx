@@ -27,7 +27,7 @@ const Home = () => {
                         // value={formData.sufixProfile}
                         />
                         <div className="login-button">
-                            <Link to={"/"}>
+                            <Link to={"/movies"}>
                                 <PrimaryButton buttonTitle="FAZER LOGIN" />
                             </Link>
                         </div>

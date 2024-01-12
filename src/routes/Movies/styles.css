@@ -1,0 +1,37 @@
+#movies-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#movies-section h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.36px;
+}
+
+#movies-section h4 {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.33px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media (min-width: 576px) {
+    #movies-section {
+        gap: 50px;
+    }
+
+    #movies-section h1 {
+        font-size: 48px;
+    }
+
+    #movies-section h4 {
+        font-size: 24px;
+    }
+}
