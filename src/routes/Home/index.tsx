@@ -7,7 +7,7 @@ import "./styles.css";
 const Home = () => {
     return (
         <section id="login-section">
-            <div className="container-lg d-flex align-items-center justify-content-space-between">
+            <div className="container-lg p-0 d-flex align-items-center justify-content-space-between">
                 <div className="card-login-logo">
                     <h1>Avalie Filmes</h1>
                     <p>Diga o que você achou do seu filme favorito</p>
@@ -15,7 +15,7 @@ const Home = () => {
                 </div>
                 <div className="card-login">
                     <h2>LOGIN</h2>
-                    <form action="">
+                    <form action="" style={{width: "100%"}}>
                         <input name="email" className="textbox"
                             type="text" placeholder="E-Mail"
                         // onChange={handleImputChange}
@@ -26,9 +26,9 @@ const Home = () => {
                         // onChange={handleImputChange}
                         // value={formData.sufixProfile}
                         />
-                        <div className="login-button">
+                        <div className="login-button-container">
                             <Link to={"/movies"}>
-                                <PrimaryButton buttonTitle="FAZER LOGIN" />
+                                <PrimaryButton className="login-button">FAZER LOGIN</PrimaryButton>
                             </Link>
                         </div>
                     </form>

@@ -16,12 +16,6 @@
     letter-spacing: -0.33px;
 }
 
-.list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
 @media (min-width: 576px) {
     #movies-section {
         gap: 50px;
