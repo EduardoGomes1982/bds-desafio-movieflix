@@ -18,6 +18,7 @@
 
 .card-login {
     margin: 0 auto;
+    width: 100%;
     max-width: 480px;
     display: flex;
     flex-direction: column;
@@ -35,7 +36,12 @@
     letter-spacing: 0.54px;
 }
 
+.card-login form {
+    width: 100%;
+}
+
 .textbox {
+    display: block;
     width: 100%;
     border: 1px solid #D9D9D9;
     margin: 3px 0px 10px 0px;
@@ -44,6 +50,7 @@
     border-radius: 4px;
     font-size: 16px;
     color: #505050;
+    background-color: #FFFFFF;
 }
 
 .textbox::placeholder {

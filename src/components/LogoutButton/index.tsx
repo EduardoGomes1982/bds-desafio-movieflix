@@ -1,6 +1,6 @@
-const LogoutButton = () => {
+const LogoutButton = (props: any) => {
     return (
-        <button id="primary-button" type="submit" className="btn btn-primary btn-sm text-black fw-bold border-1 border-secondary rounded" style={{width: "100px"}}>
+        <button onClick={props.onClick} id="primary-button" type="submit" className="btn btn-primary btn-sm text-black fw-bold border-1 border-secondary rounded" style={{ width: "100px" }}>
             SAIR
         </button>
     );

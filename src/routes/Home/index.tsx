@@ -1,10 +1,41 @@
 import PrimaryButton from "components/PrimaryButton";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+import { getTokenData, requestBackendLogin, saveAuthData } from "utils/requests";
 import frontLogin from "../../assets/front-login.svg";
-
 import "./styles.css";
+import { AuthContext } from "AuthContext";
+
+type FormData = {
+    username: string;
+    password: string;
+}
 
 const Home = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+
+    const { setAuthContextData } = useContext(AuthContext);
+
+    const [hasErros, setHasErros] = useState(false);
+
+    const history = useHistory();
+
+    const onSubmit: SubmitHandler<FormData> = (formData: FormData) => {
+        requestBackendLogin(formData).then(response => {
+            saveAuthData(response.data);
+            setHasErros(false);
+            setAuthContextData({ authenticated: true, tokenData: getTokenData() })
+            history.push("/movies");            
+        }).catch(errors => {
+            setHasErros(true);
+        });
+    };
+
+    useEffect(() => {
+        setAuthContextData({authenticated: false});
+    }, [setAuthContextData]);
+
     return (
         <section id="login-section">
             <div className="container-lg p-0 d-flex align-items-center justify-content-space-between">
@@ -15,21 +46,25 @@ const Home = () => {
                 </div>
                 <div className="card-login">
                     <h2>LOGIN</h2>
-                    <form action="" style={{width: "100%"}}>
-                        <input name="email" className="textbox"
+                    {hasErros && (<div className="alert alert-danger">Ocorreu um erro ao tentar efetuar login</div>)}
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="invalid-feedback d-block">{errors.username?.message}</div>
+                        <input {...register("username", {
+                            required: "Campo obrigatório",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Email inválido"
+                            }
+                        })}
+                            name="username" className={`textbox form-control ${errors.username ? "is-invalid" : ""}`}
                             type="text" placeholder="E-Mail"
-                        // onChange={handleImputChange}
-                        // value={formData.sufixProfile}
                         />
-                        <input name="password" className="textbox"
+                        <div className="invalid-feedback d-block">{errors.password?.message}</div>
+                        <input {...register("password", { required: "Campo obrigatório" })} name="password" className={`textbox form-control ${errors.username ? "is-invalid" : ""}`}
                             type="password" placeholder="Senha"
-                        // onChange={handleImputChange}
-                        // value={formData.sufixProfile}
                         />
                         <div className="login-button-container">
-                            <Link to={"/movies"}>
-                                <PrimaryButton className="login-button">FAZER LOGIN</PrimaryButton>
-                            </Link>
+                            <PrimaryButton className="login-button" onClick={onSubmit}>FAZER LOGIN</PrimaryButton>
                         </div>
                     </form>
                 </div>

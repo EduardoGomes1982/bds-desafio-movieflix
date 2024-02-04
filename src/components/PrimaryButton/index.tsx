@@ -1,6 +1,6 @@
 const PrimaryButton = (props: any) => {
     return (
-        <button id="primary-button" type="submit" className={"btn btn-primary text-black fw-bold " + props.className}>
+        <button id="primary-button" className={"btn btn-primary text-black fw-bold " + props.className} onSubmit={props.onSubmit}>
             {props.children}
         </button>
     );

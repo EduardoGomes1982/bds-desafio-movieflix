@@ -11,6 +11,7 @@
   font-weight: 700;
   font-size: 24px;
   letter-spacing: -0.36px;
+  cursor: pointer;
 }
 
 @media (min-width: 576px) {
