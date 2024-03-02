@@ -77,17 +77,17 @@ export const requestBackend = (config: AxiosRequestConfig) => {
     return axios({ ...config, baseURL: BASE_URL, headers });
 };
 
-axios.interceptors.request.use(function(config) {
+axios.interceptors.request.use(function (config) {
     return config;
-}, function(error) {
+}, function (error) {
     return Promise.reject(error);
 });
 
-axios.interceptors.response.use(function(response) {
+axios.interceptors.response.use(function (response) {
     if (response.status === 401 || response.status === 403)
         history.push("/");
 
     return response;
-}, function(error) {
+}, function (error) {
     return Promise.reject(error);
 });

@@ -1,0 +1,15 @@
+.card-filter-select {
+    background-color: #6C6C6C;
+    border-radius: 4px;
+}
+
+.card-filter-select form {
+    max-width: 260px;
+    margin: 0px auto;
+}
+
+@media (min-width: 321px) {
+    .card-filter-select form {
+        margin: unset;
+    }
+  }

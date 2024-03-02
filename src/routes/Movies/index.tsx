@@ -1,8 +1,9 @@
-import { useHistory } from "react-router-dom";
-import "./styles.css";
-import { isAuthenticated } from "utils/requests";
-import { useContext } from "react";
 import { AuthContext } from "AuthContext";
+import GenreFilter from "components/GenreFilter";
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { isAuthenticated } from "utils/requests";
+import "./styles.css";
 
 const Movies = () => {
     const history = useHistory();
@@ -20,9 +21,7 @@ const Movies = () => {
 
     return (
         <section id="movies-section">
-            <div className="container-lg p-0">
-                <h1>Tela listagem de filmes</h1>
-            </div>
+            <GenreFilter />
             <div className="container-lg list">
                 {list.map(i => <h4 key={i} onClick={() => handleClickLink(`/movies/${i}`)}>Acessar /movies/{i}</h4>)}
             </div>
