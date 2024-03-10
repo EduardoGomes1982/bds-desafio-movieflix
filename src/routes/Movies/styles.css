@@ -1,7 +1,8 @@
 #movies-section {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
+    gap: 20px;
 }
 
 #movies-section h4 {
@@ -11,9 +12,9 @@
     cursor: pointer;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
     #movies-section {
-        gap: 50px;
+        gap: 40px;
     }
 
     #movies-section h1 {

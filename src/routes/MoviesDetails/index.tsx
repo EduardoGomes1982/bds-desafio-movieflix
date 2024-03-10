@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 import { Review } from "types/review";
 import { requestBackend } from "utils/requests";
 import "./styles.css";
+import CardMovie from "components/CardMovie";
+import { Movie } from "types/movie";
 
 type urlParams = {
     movieId: string;
@@ -24,6 +26,8 @@ const MoviesDetails = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormData>();
 
     const { movieId } = useParams<urlParams>();
+
+    const [movie, setMovie] = useState<Movie>({} as Movie);
 
     const [reviews, setReviews] = useState<Review[]>([]);
 
@@ -52,13 +56,14 @@ const MoviesDetails = () => {
             url: `movies/${movieId}/reviews`,
             withCredentials: true
         };
-        requestBackend(config).then((response) => setReviews(response.data))
+        requestBackend(config).then((response) => setReviews(response.data));
+        requestBackend({ ...config, url: `movies/${movieId}` }).then((response) => setMovie(response.data));
     }, [movieId])
 
     return (
         <section id="movies-details-section">
             <div className="container-lg p-0 d-flex flex-column gap">
-                <h1>Tela detalhes do filme id: {movieId}</h1>
+                <CardMovie title={movie.title} year={movie.year} description={movie.subTitle} imgUrl={movie.imgUrl} sinopse={movie.synopsis} />
                 {authContextData.tokenData?.authorities.find(x => x === "ROLE_MEMBER") &&
                     <div className="card-evaluation">
                         <form onSubmit={handleSubmit(onSubmit)}>
