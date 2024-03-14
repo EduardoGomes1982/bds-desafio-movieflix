@@ -10,9 +10,9 @@ type CardMovieProps = {
 
 const CardMovie = ({ title, year, description, imgUrl, sinopse }: CardMovieProps) => {
     return (
-        <div className="card-movie" style={sinopse === undefined ? { cursor: "pointer" } : { width: "100%" }}>
+        <div className="card-movie" style={sinopse === undefined ? { cursor: "pointer", flexDirection: "column" } : { width: "100%" }}>
             <div style={sinopse !== undefined ? { padding: "0px 20px", textAlign: "center" } : {}}>
-                <img src={imgUrl} alt={title} />
+                <img src={imgUrl} alt={title} style={sinopse === undefined ? { width: "100%" } : { }} />
             </div>
             <div className="card-movie-base" style={sinopse !== undefined ? { padding: "0px 20px" } : {}}>
                 <div>
